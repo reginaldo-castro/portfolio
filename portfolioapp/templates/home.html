@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+    <header class="row bg-black">
+        <div class="col-md-4">
+            <img src="{% static 'portfolio/profile.jpeg' %}" alt="Reginaldo" width="400px" class="rounded-circle">
+        </div>
+        <div class="col-md-8 my-auto text-justify">
+            <h2>Eu sou <strong>Reginaldo Castro</strong></h2>
+            <h4>Sou um Desenvolvedor</h4>
+            <p>Tenho conhecimento em liguagens de programações como Python, framework Django, Php, framework Laravel</p>
+            <p>Com Banco de dados Mysql, Postgres</p>
+            <p>Com Docker para implementação de virtualização de containers</p>
+            <a href="{% static 'portfolio/reginaldo.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Download Cv</a>
+        </div>
+
+    </header>
+
+    <div class="row my-4 text-center">
+        <h3 class="mb-4">Meus Projetos</h3>
+    {% for project in projects %}
+        <div class="col-md-4 p-4">
+            <div class="card bg-black card-project">
+                <div class="card-body">
+                    <img src="{{project.image.url }}" alt="{{project.title}}" class="card-img-top">
+                    <h2>{{project.title}}</h2>
+                    <p>{{ project.description}}</p>
+
+                    {% if project.url %}
+                        <a href="{{project.url }}" class="btn btn-light rounded-1 btn-sm" target="_blank">{{project.url}}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% endblock %}
+    </div>
